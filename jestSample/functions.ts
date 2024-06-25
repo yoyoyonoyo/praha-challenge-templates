@@ -12,12 +12,12 @@ export const asyncSumOfArray = (numbers: number[]): Promise<number> => {
 };
 
 export const asyncSumOfArraySometimesZero = (
-  numbers: number[]
+  numbers: number[],
+  databaseSave: (input: number[]) => void
 ): Promise<number> => {
   return new Promise((resolve): void => {
     try {
-      const database = new DatabaseMock(); // fixme: この関数をテストするには、DatabaseMockの使い方を変える必要がありそう！ヒント：依存性の注入
-      database.save(numbers);
+      databaseSave(numbers);
       resolve(sumOfArray(numbers));
     } catch (error) {
       resolve(0);
@@ -26,11 +26,9 @@ export const asyncSumOfArraySometimesZero = (
 };
 
 export const getFirstNameThrowIfLong = async (
-  maxNameLength: number
+  maxNameLength: number,
+  firstName: string
 ): Promise<string> => {
-  const nameApiService = new NameApiService(); // fixme: この関数をテストするには、NameApiServiceの使い方を変える必要がありそう！ヒント：依存性の注入
-  const firstName = await nameApiService.getFirstName();
-
   if (firstName.length > maxNameLength) {
     throw new Error("first_name too long");
   }
