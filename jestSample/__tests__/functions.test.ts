@@ -10,8 +10,12 @@ describe("sumOfArrayのテスト", () => {
     expect(sumOfArray([1, 1])).toBe(2);
   });
 
-  test("引数が[]の場合、例外が発生する", () => {
-    expect(() => sumOfArray([])).toThrow();
+  //   test("引数が[]の場合、例外が発生する", () => {
+  //     expect(() => sumOfArray([])).toThrow();
+  //   });
+
+  test("引数が[]の場合、0が返る", () => {
+    expect(sumOfArray([])).toBe(0);
   });
 
   test("引数がstring型の場合、例外が発生する", () => {
@@ -25,8 +29,12 @@ describe("asyncSumOfArray", () => {
     await expect(asyncSumOfArray([1, 1])).resolves.toBe(2);
   });
 
-  test("引数が[]の場合、例外が発生する", async () => {
-    await expect(asyncSumOfArray([])).rejects.toThrow();
+  //   test("引数が[]の場合、例外が発生する", async () => {
+  //     await expect(asyncSumOfArray([])).rejects.toThrow();
+  //   });
+
+  test("引数が[]の場合、0が返る", async () => {
+    await expect(asyncSumOfArray([])).resolves.toBe(0);
   });
 
   test("引数がstring型の場合、例外が発生する", async () => {
@@ -37,14 +45,14 @@ describe("asyncSumOfArray", () => {
 
 describe("asyncSumOfArraySometimesZero", () => {
   test("databaseが正常に保存できて、引数が[1.1]の場合、2が返却される", async () => {
-    const testDatabaseSave = (input: number[]) => {};
+    const testDatabaseSave = () => {};
     await expect(
       asyncSumOfArraySometimesZero([1, 1], testDatabaseSave)
     ).resolves.toBe(2);
   });
 
   test("databaseが異常な場合0が返却される", async () => {
-    const testDatabaseSave = (input: number[]) => {
+    const testDatabaseSave = () => {
       throw new Error("databaseError");
     };
     await expect(
@@ -53,7 +61,7 @@ describe("asyncSumOfArraySometimesZero", () => {
   });
 
   test("databaseが正常に保存できて、引数が[]の場合、0が返却される", async () => {
-    const testDatabaseSave = (input: number[]) => {};
+    const testDatabaseSave = () => {};
     await expect(
       asyncSumOfArraySometimesZero([], testDatabaseSave)
     ).resolves.toBe(0);
