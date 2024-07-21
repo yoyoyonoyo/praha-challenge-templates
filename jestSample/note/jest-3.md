@@ -76,10 +76,14 @@ nameApiServiceにおいて、APIをモックしないとその都度の状況で
 
 ### A
 
+Property Based Testing（プロパティベースのテスト）
+https://qiita.com/kiwa-y/items/354744ef7393d07a8928
+
+https://medium.com/blockchain-engineer-blog/c-%E3%81%A7%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E3%83%99%E3%83%BC%E3%82%B9%E3%83%86%E3%82%B9%E3%83%88-f8d6be9bbd48
+
 > なぜこのテストの考え方がコード品質を向上してくれる可能性があるのでしょうか？
 
 - 入力値のカバレッジが広くなること
-- テストが自動化できる？
 - バグ発見率の向上
 - 再現性が高い
 
